@@ -17,11 +17,15 @@ public class QuizActivity extends AppCompatActivity {
     private static final String KEY_INDEX = "index";
     private static final int REQUEST_CODE_CHEAT = 0;
 
+    private int mCurrentIndex = 0;
+    private boolean mIsCheater;
+
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
     private Button mPrevButton;
     private Button mCheatButtin;
+
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[]{
@@ -55,9 +59,6 @@ public class QuizActivity extends AppCompatActivity {
 
         Toast.makeText(this,messageResId,Toast.LENGTH_SHORT).show();
     }
-
-    private int mCurrentIndex = 0;
-    private boolean mIsCheater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,7 +146,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState){
+    protected void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
